@@ -5,9 +5,12 @@ export const API_ENDPOINT = `https://www.omdbapi.com/?apikey=${process.env.REACT
 
 const AppContext = createContext();
 
-const AppProvider = ({children}) => {
-  return(
-    <AppContext.Provider>
+const AppProvider = ({ children }) => {
+  const [query, setQuery] = useState('batman')
+  const { isLoading, error, data: movies } = useFetch(`&s=${query}`)
+
+  return (
+    <AppContext.Provider value={{ isLoading, error, movies, query, setQuery }}>
       {children}
     </AppContext.Provider>
   )
