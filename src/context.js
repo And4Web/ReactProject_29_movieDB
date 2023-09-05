@@ -1,4 +1,7 @@
-import React, {createContext, useContext} from 'react';
+import React, {createContext, useContext, useState, useEffect} from 'react';
+import useFetch from './useFetch';
+export const API_ENDPOINT = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_MOVIE_API_KEY}`
+
 
 const AppContext = createContext();
 
@@ -14,4 +17,4 @@ const useGlobalContext = () => {
   return useContext(AppContext)
 }
 
-export {AppProvider, useGlobalContext}
+export {AppContext, AppProvider, useGlobalContext}
